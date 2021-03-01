@@ -13,7 +13,7 @@ def data_generate(records, header_names):
         for _ in range(records):
             full_name = fake.name()
             domain_name = "@testDomain.com"
-            user_id = Fname + "." + Lname + domain_name
+            user_id = full_name + domain_name
 
             writer.writerow({
                 "Email Id": user_id,
