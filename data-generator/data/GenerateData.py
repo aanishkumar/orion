@@ -20,7 +20,7 @@ def datagenerate(records, headers):
             writer.writerow({
                 "Email Id": userId,
                 "Prefix": fake.prefix(),
-                "Name": fake.name,
+                "Name": full_name,
                 "Birth Date": fake.date(pattern="%d-%m-%Y", end_datetime=datetime.date(2000, 1, 1)),
                 "Phone Number": fake1.phone_number(),
                 "Additional Email Id": fake.email(),
