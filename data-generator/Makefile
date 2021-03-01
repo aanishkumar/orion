@@ -21,5 +21,4 @@ clean: venv
 	find . -type f -name '*.pyc' -delete
 	rm -rf *.csv
 
-
 .PHONY: all venv run cleanmak

@@ -1,24 +1,22 @@
 import csv
-from faker import Faker
 import datetime
+import os
+from faker import Faker
 
 
-def datagenerate(records, headers):
+def data_generate(records, header_names):
     fake = Faker('en_US')
     fake1 = Faker('en_GB')  # To generate phone numbers
     with open("data.csv", 'wt') as csvFile:
-        writer = csv.DictWriter(csvFile, fieldnames=headers)
+        writer = csv.DictWriter(csvFile, fieldnames=header_names)
         writer.writeheader()
-        for i in range(records):
+        for _ in range(records):
             full_name = fake.name()
-            FLname = full_name.split(" ")
-            Fname = FLname[0]
-            Lname = FLname[1]
             domain_name = "@testDomain.com"
-            userId = Fname + "." + Lname + domain_name
+            user_id = Fname + "." + Lname + domain_name
 
             writer.writerow({
-                "Email Id": userId,
+                "Email Id": user_id,
                 "Prefix": fake.prefix(),
                 "Name": full_name,
                 "Birth Date": fake.date(pattern="%d-%m-%Y", end_datetime=datetime.date(2000, 1, 1)),
@@ -37,8 +35,8 @@ def datagenerate(records, headers):
 
 
 if __name__ == '__main__':
-    records = 10
+    no_of_records = int(os.getenv("NO_OF_RECORDS"))
     headers = ["Email Id", "Prefix", "Name", "Birth Date", "Phone Number", "Additional Email Id",
                "Address", "Zip Code", "City", "State", "Country", "Year", "Time", "Link", "Text"]
-    datagenerate(records, headers)
+    data_generate(no_of_records, headers)
     print("CSV generation complete!")

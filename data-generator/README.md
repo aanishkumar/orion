@@ -6,7 +6,7 @@ This project generates dummy csv data using faker API
 ### generate CSV
 
 ```bash
-    make run
+     make run NO_OF_RECORDS=5
 ```
 
 ### Clean files
