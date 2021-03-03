@@ -4,7 +4,7 @@ import os
 from faker import Faker
 
 
-def data_generate(records, header_names):
+def generate_data(records, header_names):
     fake = Faker('en_US')
     fake1 = Faker('en_GB')  # To generate phone numbers
     with open("data.csv", 'wt') as csvFile:
@@ -38,5 +38,5 @@ if __name__ == '__main__':
     no_of_records = int(os.getenv("NO_OF_RECORDS"))
     headers = ["Email Id", "Prefix", "Name", "Birth Date", "Phone Number", "Additional Email Id",
                "Address", "Zip Code", "City", "State", "Country", "Year", "Time", "Link", "Text"]
-    data_generate(no_of_records, headers)
+    generate_data(no_of_records, headers)
     print("CSV generation complete!")
