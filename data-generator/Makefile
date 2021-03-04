@@ -13,8 +13,10 @@ venv: $(VENV)/bin/activate
 
 run: venv
 	./$(VENV)/bin/python3 data/GenerateData.py
+	./$(VENV)/bin/python3 db/LoadTable.py
 
-clean:
+clean: venv
+	./$(VENV)/bin/python3 db/CleanDb.py
 	rm -rf $(VENV)
 	find . -type f -name '*.pyc' -delete
 	rm -rf *.csv
